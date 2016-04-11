@@ -9,14 +9,14 @@ import (
 
 func dbConnection() {
 	db, err := sql.Open("mysql",
-		"root:@tcp(127.0.0.1)/hello")
+		"root:@tcp(127.0.0.1:3306)/blog")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	err = db.Ping()
 	if err != nil {
-		log.Println("Ping successful")
+		log.Fatal(err)
 	}
 
 	defer db.Close()
