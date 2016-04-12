@@ -90,7 +90,13 @@ func PostShow(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostCreate(w http.ResponseWriter, r *http.Request) {
-	var post Post
+	var (
+		post    Post
+		id      int
+		title   string
+		content string
+		posted  string
+	)
 
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
 	if err != nil {
@@ -104,5 +110,34 @@ func PostCreate(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(422)
 	}
-	log.Print(post)
+
+	db := dbConnection()
+	_, err = db.Query("INSERT INTO posts (title, content) values (?, ?)", post.Title, post.Content)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	rows, err := db.Query("SELECT * FROM posts ORDER BY id DESC LIMIT 1")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		err := rows.Scan(&id, &title, &content, &posted)
+		if err != nil {
+			log.Fatal(err)
+		}
+		post = Post{id, title, content, posted}
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	JSONHandler(w, r)
+	if err := json.NewEncoder(w).Encode(post); err != nil {
+		log.Fatal(err)
+	}
 }
