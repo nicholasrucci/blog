@@ -7,6 +7,8 @@ import (
 	"log"
 )
 
+// dbConnection opens a new database connection and
+// returns a pointer to the sql.DB
 func dbConnection() *sql.DB {
 	db, err := sql.Open("mysql",
 		"root:@tcp(127.0.0.1:3306)/blog")
