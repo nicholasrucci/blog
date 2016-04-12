@@ -11,10 +11,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Index is a method that is called when the root '/'
+// of the project is accessed
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome!")
 }
 
+// PostIndex queries the database for all of the posts,
+// appends each row to an array of post, and then
+// renders all of them as JSON
 func PostIndex(w http.ResponseWriter, r *http.Request) {
 	var (
 		posts   Posts
@@ -51,6 +56,9 @@ func PostIndex(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// PostShow queries the database for a specific post by
+// it's ID. It will then create a Post from the values
+// that were grabbed and render the Post as JSON
 func PostShow(w http.ResponseWriter, r *http.Request) {
 	var (
 		p       Post
@@ -89,6 +97,11 @@ func PostShow(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// PostCreate accepts a JSON object that includes the
+// attributes `title` and `content`. It will then insert
+// a new row to the database containing that data. After
+// adding the new row, PostCreate responds with a JSON
+// object of the created Post
 func PostCreate(w http.ResponseWriter, r *http.Request) {
 	var (
 		post    Post
