@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -22,7 +21,7 @@ func PostIndex(w http.ResponseWriter, r *http.Request) {
 		id      int
 		title   string
 		content string
-		posted  time.Time
+		posted  string
 	)
 
 	db := dbConnection()
@@ -58,7 +57,7 @@ func PostShow(w http.ResponseWriter, r *http.Request) {
 		id      int
 		title   string
 		content string
-		posted  time.Time
+		posted  string
 	)
 
 	vars := mux.Vars(r)
@@ -94,7 +93,6 @@ func PostCreate(w http.ResponseWriter, r *http.Request) {
 	var post Post
 
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
-	log.Print(body)
 	if err != nil {
 		log.Fatal(err)
 	}
