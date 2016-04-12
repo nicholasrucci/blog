@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -174,8 +173,10 @@ func PostUpdate(w http.ResponseWriter, r *http.Request) {
 	_, err = db.Query("UPDATE posts SET title=?, content=? WHERE ID = ?", post.Title, post.Content, postId)
 	if err != nil {
 		log.Fatal(err)
+		ErrorStatus(w, r)
 	}
 	defer db.Close()
+	SuccessStatus(w, r)
 }
 
 // PostDelete queries the database for the ID specified
@@ -189,6 +190,9 @@ func PostDelete(w http.ResponseWriter, r *http.Request) {
 	_, err := db.Query("DELETE FROM posts WHERE ID = ?", postId)
 	if err != nil {
 		log.Fatal(err)
+		ErrorStatus(w, r)
 	}
 	defer db.Close()
+	SuccessStatus(w, r)
+
 }
