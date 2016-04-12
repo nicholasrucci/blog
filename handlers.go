@@ -155,6 +155,33 @@ func PostCreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func PostUpdate(w http.ResponseWriter, r *http.Request) {
+	var post Post
+
+	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := r.Body.Close(); err != nil {
+		log.Fatal(err)
+	}
+
+	if err := json.Unmarshal(body, &post); err != nil {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(422)
+	}
+
+	vars := mux.Vars(r)
+	postId := vars["postId"]
+
+	db := dbConnection()
+	_, err = db.Query("UPDATE posts SET title=?, content=? WHERE ID = ?", post.Title, post.Content, postId)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+}
+
 // PostDelete queries the database for the ID specified
 // by the client and deletes it.
 // TODO: return `x` umong delete
