@@ -44,4 +44,10 @@ var routes = Routes{
 		"/api/posts/{postId}",
 		PostShow,
 	},
+	Route{
+		"PostDelete",
+		"DELETE",
+		"/api/posts/{postId}",
+		PostDelete,
+	},
 }
