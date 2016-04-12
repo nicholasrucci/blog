@@ -29,19 +29,19 @@ var routes = Routes{
 	Route{
 		"PostIndex",
 		"GET",
-		"/posts",
+		"/api/posts",
 		PostIndex,
 	},
 	Route{
 		"PostCreate",
 		"POST",
-		"/posts",
+		"/api/posts",
 		PostCreate,
 	},
 	Route{
 		"PostShow",
 		"GET",
-		"/posts/{postId}",
+		"/api/posts/{postId}",
 		PostShow,
 	},
 }
