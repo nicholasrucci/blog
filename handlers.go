@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
@@ -89,5 +91,20 @@ func PostShow(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostCreate(w http.ResponseWriter, r *http.Request) {
+	var post Post
 
+	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	log.Print(body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := r.Body.Close(); err != nil {
+		log.Fatal(err)
+	}
+
+	if err := json.Unmarshal(body, &post); err != nil {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(422)
+	}
+	log.Print(post)
 }
