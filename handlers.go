@@ -35,7 +35,8 @@ func PostIndex(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		log.Println(id, title, content, posted)
+		p := Post{id, title, content, posted}
+		posts = append(posts, p)
 	}
 	err = rows.Err()
 	if err != nil {
