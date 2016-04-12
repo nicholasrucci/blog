@@ -51,9 +51,41 @@ func PostIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostShow(w http.ResponseWriter, r *http.Request) {
+	var (
+		p       Post
+		id      int
+		title   string
+		content string
+		posted  time.Time
+	)
+
 	vars := mux.Vars(r)
 	postId := vars["postId"]
-	fmt.Fprintln(w, "Post show:", postId)
+
+	db := dbConnection()
+	rows, err := db.Query("SELECT * FROM posts WHERE ID = ?", postId)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		err := rows.Scan(&id, &title, &content, &posted)
+		if err != nil {
+			log.Fatal(err)
+		}
+		p = Post{id, title, content, posted}
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	JSONHandler(w, r)
+	if err := json.NewEncoder(w).Encode(p); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func PostCreate(w http.ResponseWriter, r *http.Request) {
