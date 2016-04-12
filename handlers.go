@@ -155,6 +155,8 @@ func PostCreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// PostUpdate receives data from the client that will replace
+// a post with the specified ID that is sent over as well.
 func PostUpdate(w http.ResponseWriter, r *http.Request) {
 	var post Post
 
