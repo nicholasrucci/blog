@@ -16,10 +16,10 @@ go build
 
 ```js
 GET     /api/posts
-GET     /api/posts
+GET     /api/posts/:id
 POST    /api/posts
-PUT     /api/posts
-DELETE  /api/posts
+PUT     /api/posts/:id
+DELETE  /api/posts/:id
 ```
 
 ## This isn't the finished product!
