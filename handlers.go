@@ -154,3 +154,15 @@ func PostCreate(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 }
+
+func PostDelete(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	postId := vars["postId"]
+
+	db := dbConnection()
+	_, err := db.Query("DELETE FROM posts WHERE ID = ?", postId)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+}
