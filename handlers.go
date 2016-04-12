@@ -155,6 +155,9 @@ func PostCreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// PostDelete queries the database for the ID specified
+// by the client and deletes it.
+// TODO: return `x` umong delete
 func PostDelete(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	postId := vars["postId"]
