@@ -11,12 +11,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Index is a method that is called when the root '/'
-// of the project is accessed
-func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome!")
-}
-
 // PostIndex queries the database for all of the posts,
 // appends each row to an array of post, and then
 // renders all of them as JSON
