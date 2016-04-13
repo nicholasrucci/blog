@@ -26,6 +26,9 @@ func NewRouter() *mux.Router {
 			Handler(route.HandlerFunc)
 	}
 
+	// Serves files in public directory at the root url
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("public/")))
+
 	return router
 
 }

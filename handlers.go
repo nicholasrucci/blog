@@ -10,10 +10,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Index(w http.ResponseWriter, r *http.Request) {
-	// TODO: Something to render html file
-}
-
 // PostIndex queries the database for all of the posts,
 // appends each row to an array of post, and then
 // renders all of them as JSON
