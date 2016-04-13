@@ -1,3 +1,6 @@
+# Created by https://www.gitignore.io/api/go,typings,vim,osx
+
+### Go ###
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
 *.a
@@ -23,5 +26,52 @@ _testmain.go
 *.test
 *.prof
 
+
+### Typings ###
+## Ignore downloaded typings
+typings
+
+
+### Vim ###
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+## Self Implemented ##
 config.go
 node_modules
