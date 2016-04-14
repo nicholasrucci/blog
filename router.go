@@ -37,5 +37,6 @@ func NewRouter() *mux.Router {
 // make the Content Type of the responses as JSON.
 func JSONHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
 }
