@@ -4,12 +4,9 @@ import (
 	"net/http"
 )
 
-type ResponseWriter interface {
-	Header() http.Header
-	Write([]byte) (int, error)
-	WriteHeader(int)
-}
-
+// Route is a struct contating the name,
+// method, pattern, and handler function
+// for the route
 type Route struct {
 	Name        string
 	Method      string
@@ -17,6 +14,7 @@ type Route struct {
 	HandlerFunc http.HandlerFunc
 }
 
+// Routes holds an array of of type Route
 type Routes []Route
 
 var routes = Routes{
