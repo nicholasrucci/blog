@@ -45,7 +45,7 @@ func PostShow(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	t, _ := template.ParseFiles("public/post.html")
-	data := &Post{Title: title, Content: content}
+	data := &Post{Title: title, Content: content, Posted: posted}
 
 	t.Execute(w, data)
 }
