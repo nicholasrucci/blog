@@ -12,6 +12,10 @@ body {
    flex: 1 0 auto;
  }
 
+#posted-on {
+  font-size: 14px;
+}
+
 .footer-link {
   margin-left: 15px;
 }
@@ -20,4 +24,8 @@ body {
   max-width: 1300px;
   margin: 0 auto;
   padding-left: 10px;
+}
+
+.blog-content-text {
+  font-size: 18px;
 }
