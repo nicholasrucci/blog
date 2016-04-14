@@ -11,6 +11,16 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// AdminPostNew renders html to add a new post
+func AdminPostNew(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("public/views/admin/newPost.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	t.Execute(w, nil)
+}
+
 // PostShow renders html file
 func PostShow(w http.ResponseWriter, r *http.Request) {
 	// body, _ := ioutil.ReadFile("./public/post.html")
@@ -44,7 +54,10 @@ func PostShow(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 
-	t, _ := template.ParseFiles("public/views/post.html")
+	t, err := template.ParseFiles("public/views/post.html")
+	if err != nil {
+		log.Fatal(err)
+	}
 	data := &Post{Title: title, Content: content, Posted: posted}
 
 	t.Execute(w, data)

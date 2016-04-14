@@ -21,6 +21,12 @@ type Routes []Route
 
 var routes = Routes{
 	Route{
+		"AdminPostNew",
+		"GET",
+		"/admin/posts/new",
+		AdminPostNew,
+	},
+	Route{
 		"PostShow",
 		"GET",
 		"/posts/{postID}",
