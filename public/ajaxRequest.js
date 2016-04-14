@@ -15,7 +15,6 @@
       if (xhr.status === OK) {
 
         posts = JSON.parse(xhr.responseText);
-        console.log(posts);
 
         for (i = 0; i < posts.length; i++) {
           var card        = document.createElement("div");
@@ -41,7 +40,7 @@
           cardAction.appendChild(link);
 
           button.innerHTML = "Click to Read";
-          button.className += "btn waves-effect red darken-1";
+          button.className += "btn waves-effect blue";
 
           link.setAttribute("href", "#");
           link.appendChild(button)
