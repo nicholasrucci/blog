@@ -11,12 +11,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// PostShow renders html file
 func PostShow(w http.ResponseWriter, r *http.Request) {
-	body, err := ioutil.ReadFile("public/posts.html")
-	fmt.Fprint(w, string(body))
+	body, _ := ioutil.ReadFile("./public/post.html")
+	fmt.Fprintf(w, string(body))
 }
 
-// PostIndex queries the database for all of the posts,
+// APIPostIndex queries the database for all of the posts,
 // appends each row to an array of post, and then
 // renders all of them as JSON
 func APIPostIndex(w http.ResponseWriter, r *http.Request) {
@@ -55,7 +56,7 @@ func APIPostIndex(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// PostShow queries the database for a specific post by
+// APIPostShow queries the database for a specific post by
 // it's ID. It will then create a Post from the values
 // that were grabbed and render the Post as JSON
 func APIPostShow(w http.ResponseWriter, r *http.Request) {
@@ -68,10 +69,10 @@ func APIPostShow(w http.ResponseWriter, r *http.Request) {
 	)
 
 	vars := mux.Vars(r)
-	postId := vars["postId"]
+	postID := vars["postID"]
 
 	db := dbConnection()
-	rows, err := db.Query("SELECT * FROM posts WHERE ID = ?", postId)
+	rows, err := db.Query("SELECT * FROM posts WHERE ID = ?", postID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -96,7 +97,7 @@ func APIPostShow(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// PostCreate accepts a JSON object that includes the
+// APIPostCreate accepts a JSON object that includes the
 // attributes `title` and `content`. It will then insert
 // a new row to the database containing that data. After
 // adding the new row, PostCreate responds with a JSON
@@ -154,7 +155,7 @@ func APIPostCreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// PostUpdate receives data from the client that will replace
+// APIPostUpdate receives data from the client that will replace
 // a post with the specified ID that is sent over as well.
 func APIPostUpdate(w http.ResponseWriter, r *http.Request) {
 	var post Post
@@ -173,10 +174,10 @@ func APIPostUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	vars := mux.Vars(r)
-	postId := vars["postId"]
+	postID := vars["postID"]
 
 	db := dbConnection()
-	_, err = db.Query("UPDATE posts SET title=?, content=? WHERE ID = ?", post.Title, post.Content, postId)
+	_, err = db.Query("UPDATE posts SET title=?, content=? WHERE ID = ?", post.Title, post.Content, postID)
 	if err != nil {
 		log.Fatal(err)
 		ErrorStatus(w, r)
@@ -185,15 +186,15 @@ func APIPostUpdate(w http.ResponseWriter, r *http.Request) {
 	SuccessStatus(w, r)
 }
 
-// PostDelete queries the database for the ID specified
+// APIPostDelete queries the database for the ID specified
 // by the client and deletes it.
 // TODO: return `x` umong delete
 func APIPostDelete(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	postId := vars["postId"]
+	postID := vars["postID"]
 
 	db := dbConnection()
-	_, err := db.Query("DELETE FROM posts WHERE ID = ?", postId)
+	_, err := db.Query("DELETE FROM posts WHERE ID = ?", postID)
 	if err != nil {
 		log.Fatal(err)
 		ErrorStatus(w, r)
