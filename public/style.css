@@ -1,0 +1,9 @@
+html {
+  font-family: "Avenir";
+}
+
+.nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 10px;
+}
