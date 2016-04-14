@@ -25,7 +25,7 @@
           var title       = document.createElement("span");
           var titleText   = document.createTextNode(posts[i].title);
           var content     = document.createElement("p");
-          var contentText = document.createTextNode(posts[i].content);
+          var contentText = document.createTextNode(posts[i].content.slice(0, 245) + "....");
           var element     = document.getElementById("posts-container");
 
           card.appendChild(cardContent);
