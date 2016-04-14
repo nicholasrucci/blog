@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
+    <script src="../splitContent.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   </head>
@@ -28,9 +29,12 @@
     </nav>
 
     <div class="container">
-      <h3>{{.Title}} <span id="posted-on">Posted on: {{.Posted}} </span></h3>
+      <p>
+        <h3>{{.Title}}</h3>
+        <span id="posted-on">Posted on: {{.Posted}} </span>
+      </p>
       <div class="row">
-        <p class="blog-content-text">
+        <p id="blog-content" class="blog-content-text">
           {{.Content}}
         </p>
       </div>
