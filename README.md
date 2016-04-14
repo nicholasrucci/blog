@@ -29,4 +29,5 @@ DELETE  /api/posts/:id
 - [ ] Structure project
 - [ ] Add more error handling
 - [ ] Update documentation
-- [ ] Hook up Angular 2
+- [ ] Hook up views
+- [x] Grab data from API
