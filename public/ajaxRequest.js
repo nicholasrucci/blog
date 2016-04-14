@@ -28,7 +28,7 @@
           var contentText = document.createTextNode(posts[i].content);
           var element     = document.getElementById("posts-container");
 
-          card.appendChild(cardContent)
+          card.appendChild(cardContent);
           card.className += "card blue-grey darken-1";
 
           cardContent.appendChild(title)
@@ -40,11 +40,12 @@
           cardAction.appendChild(link);
 
           link.innerHTML = "Click to Read";
+          link.setAttribute("href", "#");
 
           title.appendChild(titleText);
           title.className += "card-title";
 
-          content.appendChild(contentText)
+          content.appendChild(contentText);
 
           element.appendChild(card);
         }
