@@ -13,7 +13,7 @@ import (
 // PostIndex queries the database for all of the posts,
 // appends each row to an array of post, and then
 // renders all of them as JSON
-func PostIndex(w http.ResponseWriter, r *http.Request) {
+func APIPostIndex(w http.ResponseWriter, r *http.Request) {
 	var (
 		posts   Posts
 		id      int
@@ -52,7 +52,7 @@ func PostIndex(w http.ResponseWriter, r *http.Request) {
 // PostShow queries the database for a specific post by
 // it's ID. It will then create a Post from the values
 // that were grabbed and render the Post as JSON
-func PostShow(w http.ResponseWriter, r *http.Request) {
+func APIPostShow(w http.ResponseWriter, r *http.Request) {
 	var (
 		p       Post
 		id      int
@@ -95,7 +95,7 @@ func PostShow(w http.ResponseWriter, r *http.Request) {
 // a new row to the database containing that data. After
 // adding the new row, PostCreate responds with a JSON
 // object of the created Post
-func PostCreate(w http.ResponseWriter, r *http.Request) {
+func APIPostCreate(w http.ResponseWriter, r *http.Request) {
 	var (
 		post    Post
 		id      int
@@ -150,7 +150,7 @@ func PostCreate(w http.ResponseWriter, r *http.Request) {
 
 // PostUpdate receives data from the client that will replace
 // a post with the specified ID that is sent over as well.
-func PostUpdate(w http.ResponseWriter, r *http.Request) {
+func APIPostUpdate(w http.ResponseWriter, r *http.Request) {
 	var post Post
 
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
@@ -182,7 +182,7 @@ func PostUpdate(w http.ResponseWriter, r *http.Request) {
 // PostDelete queries the database for the ID specified
 // by the client and deletes it.
 // TODO: return `x` umong delete
-func PostDelete(w http.ResponseWriter, r *http.Request) {
+func APIPostDelete(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	postId := vars["postId"]
 
