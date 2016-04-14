@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -9,6 +10,11 @@ import (
 
 	"github.com/gorilla/mux"
 )
+
+func PostShow(w http.ResponseWriter, r *http.Request) {
+	body, err := ioutil.ReadFile("public/posts.html")
+	fmt.Fprint(w, string(body))
+}
 
 // PostIndex queries the database for all of the posts,
 // appends each row to an array of post, and then
