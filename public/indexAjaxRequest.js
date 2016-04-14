@@ -42,7 +42,7 @@
           button.innerHTML = "Click to Read";
           button.className += "btn waves-effect blue";
 
-          link.setAttribute("href", "#");
+          link.setAttribute("href", "/posts/" + posts[i].id);
           link.appendChild(button)
           link.className += "";
 
