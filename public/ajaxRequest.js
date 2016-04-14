@@ -22,6 +22,7 @@
           var cardContent = document.createElement("div");
           var cardAction  = document.createElement("div");
           var link        = document.createElement("a");
+          var button      = document.createElement("button");
           var title       = document.createElement("span");
           var titleText   = document.createTextNode(posts[i].title);
           var content     = document.createElement("p");
@@ -29,18 +30,22 @@
           var element     = document.getElementById("posts-container");
 
           card.appendChild(cardContent);
-          card.className += "card blue-grey darken-1";
+          card.className += "card grey lighten-2";
 
           cardContent.appendChild(title)
-          cardContent.className += "card-content white-text";
+          cardContent.className += "card-content black-text";
           cardContent.appendChild(content)
           cardContent.appendChild(cardAction);
 
           cardAction.className += "card-action";
           cardAction.appendChild(link);
 
-          link.innerHTML = "Click to Read";
+          button.innerHTML = "Click to Read";
+          button.className += "btn waves-effect red darken-1";
+
           link.setAttribute("href", "#");
+          link.appendChild(button)
+          link.className += "";
 
           title.appendChild(titleText);
           title.className += "card-title";
