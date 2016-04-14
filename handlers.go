@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"html/template"
 	"io"
 	"io/ioutil"
 	"log"
@@ -13,8 +13,41 @@ import (
 
 // PostShow renders html file
 func PostShow(w http.ResponseWriter, r *http.Request) {
-	body, _ := ioutil.ReadFile("./public/post.html")
-	fmt.Fprintf(w, string(body))
+	// body, _ := ioutil.ReadFile("./public/post.html")
+	// fmt.Fprintf(w, string(body))
+	var (
+		id      int
+		title   string
+		content string
+		posted  string
+	)
+
+	vars := mux.Vars(r)
+	postID := vars["postID"]
+
+	db := dbConnection()
+	rows, err := db.Query("SELECT * FROM posts WHERE ID = ?", postID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		err = rows.Scan(&id, &title, &content, &posted)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	t, _ := template.ParseFiles("public/post.html")
+	data := &Post{Title: title, Content: content}
+
+	t.Execute(w, data)
 }
 
 // APIPostIndex queries the database for all of the posts,
