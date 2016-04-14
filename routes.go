@@ -21,33 +21,39 @@ type Routes []Route
 
 var routes = Routes{
 	Route{
+		"PostShow",
+		"GET",
+		"/posts/{postID}",
+		PostShow,
+	},
+	Route{
 		"PostIndex",
 		"GET",
 		"/api/posts",
-		PostIndex,
+		APIPostIndex,
 	},
 	Route{
 		"PostCreate",
 		"POST",
 		"/api/posts",
-		PostCreate,
+		APIPostCreate,
 	},
 	Route{
 		"PostShow",
 		"GET",
-		"/api/posts/{postId}",
-		PostShow,
+		"/api/posts/{postID}",
+		APIPostShow,
 	},
 	Route{
 		"PostUpdate",
 		"PUT",
 		"/api/posts/{postId}",
-		PostUpdate,
+		APIPostUpdate,
 	},
 	Route{
 		"PostDelete",
 		"DELETE",
 		"/api/posts/{postId}",
-		PostDelete,
+		APIPostDelete,
 	},
 }
