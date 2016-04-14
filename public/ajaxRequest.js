@@ -20,13 +20,20 @@
         console.log(posts);
 
         for (i = 0; i < posts.length; i++) {
-          var div = document.createElement("div");
-          var title = document.createElement("h2");
-          div.appendChild(title)
-          var titleText = document.createTextNode(posts[i].title);
-          title.appendChild(titleText);
+          var div         = document.createElement("div");
+          var link        = document.createElement("a")
+          var title       = document.createElement("h2");
+          var titleText   = document.createTextNode(posts[i].title);
+          var content     = document.createElement("p");
+          var contentText = document.createTextNode(posts[i].content);
+          var element     = document.getElementById("posts-container");
 
-          var element = document.getElementById("posts-container");
+          div.appendChild(link)
+          link.appendChild(title)
+          link.setAttribute('href',"#")
+          title.appendChild(titleText);
+          div.appendChild(content)
+          content.appendChild(contentText)
           element.appendChild(div);
         }
       }
