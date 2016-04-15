@@ -1,7 +1,9 @@
-# Blog - RESTful API in Go
+# Blog - RESTful API in Go & JS Frontend
 
 This is a basic implementation of an API using Go. It provides the ability to
 handle simple blog actions. This API is meant to be as lightweight as possible. The biggest external package that is uses is [gorilla/mux](http://www.gorillatoolkit.org/pkg/mux).
+
+Rendering template from Go could have been done for this project. I decided to use not do that so I can get the experience of doing this with vanilla Javascript.
 
 ## Installation
 ```bash
