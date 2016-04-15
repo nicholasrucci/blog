@@ -25,10 +25,11 @@ DELETE  /api/posts/:id
 ## This isn't the finished product!
 - [x] CRUD
 - [x] Database functionality
+- [x] Grab data from API
+- [x] Hook up views
 - [ ] Clean up server side code
 - [ ] Structure server side code
 - [ ] Add more error handling
 - [ ] Authentication
 - [ ] 404 pages
-- [x] Hook up views
-- [x] Grab data from API
+- [ ] Restrict access to admin pages
