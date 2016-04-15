@@ -17,6 +17,10 @@ body {
   color: #b2b2b2;
 }
 
+#fixed_button {
+  margin-top: 20px;
+}
+
 .footer-link {
   margin-left: 15px;
 }
