@@ -40,7 +40,7 @@
           cardAction.appendChild(link);
 
           button.innerHTML = "Click to Read";
-          button.className += "btn waves-effect blue";
+          button.className += "btn waves-effect red";
 
           link.setAttribute("href", "/posts/" + posts[i].id);
           link.appendChild(button)
