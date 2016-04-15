@@ -31,6 +31,16 @@ func AdminPostNew(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, nil)
 }
 
+// AdminPostEdit render html to edit a post
+func AdminPostEdit(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("public/views/admin/editPost.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	t.Execute(w, nil)
+}
+
 // PostShow renders html file
 func PostShow(w http.ResponseWriter, r *http.Request) {
 	// body, _ := ioutil.ReadFile("./public/post.html")
