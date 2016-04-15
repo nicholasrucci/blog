@@ -15,6 +15,7 @@
       if (xhr.status === OK) {
 
         posts = JSON.parse(xhr.responseText);
+        posts.reverse();
 
         for (i = 0; i < posts.length; i++) {
           var card        = document.createElement("div");
