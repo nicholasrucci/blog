@@ -14,6 +14,10 @@ function sendDelete(id) {
   getAllPosts();
 }
 
+function sendEdit(id) {
+  location.href = "/admin/posts/" + id + "/edit";
+}
+
 function getAllPosts() {
   var xhr = new XMLHttpRequest();
 
@@ -58,6 +62,7 @@ function getAllPosts() {
 
           editDiv.appendChild(editIcon);
           editDiv.setAttribute("id", "" + posts[i].id);
+          editDiv.setAttribute("onclick", "sendEdit(this.id)");
 
           trashDiv.appendChild(trashIcon);
           trashDiv.setAttribute("id", "" + posts[i].id);
