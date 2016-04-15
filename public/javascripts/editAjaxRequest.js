@@ -22,7 +22,12 @@
       if (xhr.status === OK) {
 
         post = JSON.parse(xhr.responseText);
-        console.log(post);
+
+        var title   = document.getElementById("title");
+        var content = document.getElementById("content");
+
+        title.setAttribute("value", post.title);
+        content.innerHTML = post.content;
 
       }
     }
