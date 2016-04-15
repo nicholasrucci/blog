@@ -9,8 +9,9 @@ function sendDelete(id) {
 
   xhr.open("DELETE", "/api/posts/" + id);
   xhr.send(null);
-  
+
   $('#posts-container').load(document.URL +  ' #posts-container');
+  getAllPosts();
 }
 
 function getAllPosts() {
@@ -53,8 +54,6 @@ function getAllPosts() {
 
           editLink.appendChild(editDiv);
           trashLink.appendChild(trashDiv);
-
-          trashLink.setAttribute("href", "#");
 
           editDiv.appendChild(editIcon);
           editDiv.setAttribute("id", "" + posts[i].id);
