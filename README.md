@@ -12,7 +12,7 @@ go build
 ```
 
 
-## Endpoints
+## API Endpoints
 
 ```js
 GET     /api/posts
@@ -25,9 +25,10 @@ DELETE  /api/posts/:id
 ## This isn't the finished product!
 - [x] CRUD
 - [x] Database functionality
-- [ ] Clean up code
-- [ ] Structure project
+- [ ] Clean up server side code
+- [ ] Structure server side code
 - [ ] Add more error handling
-- [ ] Update documentation
-- [ ] Hook up views
+- [ ] Authentication
+- [ ] 404 pages
+- [x] Hook up views
 - [x] Grab data from API
