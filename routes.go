@@ -33,7 +33,7 @@ var routes = Routes{
 	Route{
 		"AdminPostEdit",
 		"GET",
-		"/admin/posts/{[postID]}",
+		"/admin/posts/{[postID]}/edit",
 		AdminPostEdit,
 	},
 	Route{
