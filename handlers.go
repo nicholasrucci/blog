@@ -11,6 +11,16 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// AdminLogin renders html to add a new post
+func AdminLogin(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("public/views/admin/login.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	t.Execute(w, nil)
+}
+
 // AdminPostIndex renders html to add a new post
 func AdminPostIndex(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("public/views/admin/posts.html")
