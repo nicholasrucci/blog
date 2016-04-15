@@ -12,13 +12,13 @@ body {
    flex: 1 0 auto;
  }
 
+ a {
+   color: #000;
+ }
+
 #posted-on {
   font-size: 16px;
   color: #b2b2b2;
-}
-
-a {
-  color: #000;
 }
 
 #fixed_button {
