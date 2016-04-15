@@ -4,6 +4,15 @@ window.onload = function() {
   getAllPosts();
 };
 
+function sendDelete(id) {
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("DELETE", "/api/posts/" + id);
+  xhr.send(null);
+  
+  $('#posts-container').load(document.URL +  ' #posts-container');
+}
+
 function getAllPosts() {
   var xhr = new XMLHttpRequest();
 
@@ -35,7 +44,6 @@ function getAllPosts() {
           var trashLink   = document.createElement("a");
           var editLink    = document.createElement("a");
 
-          card.setAttribute("id", "" + posts[i].id);
           card.appendChild(cardContent);
           card.className += "card-panel grey lighten-2";
 
@@ -46,10 +54,14 @@ function getAllPosts() {
           editLink.appendChild(editDiv);
           trashLink.appendChild(trashDiv);
 
-          trashLink.setAttribute("href", "");
+          trashLink.setAttribute("href", "#");
 
           editDiv.appendChild(editIcon);
+          editDiv.setAttribute("id", "" + posts[i].id);
+
           trashDiv.appendChild(trashIcon);
+          trashDiv.setAttribute("id", "" + posts[i].id);
+          trashDiv.setAttribute("onclick", "sendDelete(this.id)");
 
           trashIcon.className += "right fa fa-trash fa-lg";
           editIcon.className += "right fa fa-pencil-square-o fa-lg";
