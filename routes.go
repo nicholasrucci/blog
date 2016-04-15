@@ -31,6 +31,12 @@ var routes = Routes{
 		AdminPostNew,
 	},
 	Route{
+		"AdminPostEdit",
+		"GET",
+		"/admin/posts/{[postID]}",
+		AdminPostEdit,
+	},
+	Route{
 		"PostShow",
 		"GET",
 		"/posts/{postID}",
