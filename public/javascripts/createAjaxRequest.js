@@ -17,5 +17,5 @@
     xhr.open("POST", "/api/posts");
     xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     xhr.send(JSON.stringify(reqObject));
-    window.location.replace("/");
+    window.location.replace("/admin/posts");
   }
