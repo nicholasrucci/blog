@@ -38,3 +38,8 @@ body {
 .blog-content-text {
   font-size: 18px;
 }
+
+.centered-div {
+  margin-top: 175px;
+  width: 100%;
+}
