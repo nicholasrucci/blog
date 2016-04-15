@@ -29,7 +29,7 @@
           var element     = document.getElementById("posts-container");
 
           card.appendChild(cardContent);
-          card.className += "card grey lighten-2";
+          card.className += "card grey lighten-5";
 
           cardContent.appendChild(title)
           cardContent.className += "card-content black-text";

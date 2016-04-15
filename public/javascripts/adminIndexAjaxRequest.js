@@ -46,7 +46,7 @@ function getAllPosts() {
           var editLink    = document.createElement("a");
 
           card.appendChild(cardContent);
-          card.className += "card-panel grey lighten-2";
+          card.className += "card-panel grey lighten-5";
 
           cardContent.appendChild(title)
           cardContent.className += "card-content black-text";
