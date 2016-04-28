@@ -28,7 +28,7 @@ DELETE  /api/posts/:id
 - [x] CRUD
 - [x] Database functionality
 - [x] Grab data from API
-- [ ] Hook up views
+- [x] Hook up views
 - [ ] Clean up server side code
 - [ ] Structure server side code
 - [ ] Add more error handling
